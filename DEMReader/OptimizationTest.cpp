@@ -8,7 +8,7 @@
 using namespace std;
 const int hgt_size = 1201;
 
-vector<short> profile(double x1, double x2, double y1, double y2);
+//vector<short> profile(double x1, double x2, double y1, double y2);
 
 int main(){
 	bool inputting = 1;
@@ -40,9 +40,7 @@ int main(){
 	return 0;
 }
 
+/*
 vector<short> profile(double x1, double x2, double y1, double y2){
 	vector<char> profVect;
-
-
-
-}
+}*/

@@ -20,6 +20,6 @@ private:
 	int xpos;
 	int ypos;
 	double heigth;
-	double elevation;
+	short elevation;
 };
 

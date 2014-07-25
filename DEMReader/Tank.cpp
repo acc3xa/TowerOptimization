@@ -18,7 +18,8 @@ Tank::Tank(int id, double lat, double lon, double hgt, Map themap){
 	double longdif = lon - (double)gridlong;
 	ypos = (int)((1 - latdif) * 1201);
 	xpos = (int)((1 - longdif) * 1201);
-	//elevation = hgt + gridPtr[xpos][ypos];
+	short h = heigth;
+	//elevation = h + gridPtr;
 
 
 }
