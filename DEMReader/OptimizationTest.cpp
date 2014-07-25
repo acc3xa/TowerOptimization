@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <string>
 #include "Map.h"
+#include "Grid.h"
+#include "Tank.h"
 
 
 using namespace std;
 const int hgt_size = 1201;
-
-//vector<short> profile(double x1, double x2, double y1, double y2);
 
 int main(){
 	bool inputting = 1;
@@ -37,10 +37,34 @@ int main(){
 		}
 
 	}
+
+	int id1, id2;
+	double lat1, lon1, hgt1, lat2, lon2, hgt2;
+	cout << "Enter id # of first tank: ";
+	cin >> id1;
+	cout << "Enter Latitude of first tank: ";
+	cin >> lat1;
+	cout << "Enter Longitude of first tank: ";
+	cin >> lon1;
+	cout << "Enter Height of first tank: ";
+	cin >> hgt1;
+	cout << "Enter id # of second tank: ";
+	cin >> id2;
+	cout << "Enter Latitude of second tank: ";
+	cin >> lat2;
+	cout << "Enter Longitude of second tank: ";
+	cin >> lon2;
+	cout << "Enter Height of second tank: ";
+	cin >> hgt2;
+
+	Tank tank1 = Tank(id1, lat1, lon1, hgt1, *theMap);
+	Tank tank2 = Tank(id2, lat2, lon2, hgt2, *theMap);
+
+	cout << "TANK 1 INFO" << endl;
+	tank1.print();
+	cout << "TANK 2 INFO" << endl;
+	tank2.print();
+
 	return 0;
 }
 
-/*
-vector<short> profile(double x1, double x2, double y1, double y2){
-	vector<char> profVect;
-}*/

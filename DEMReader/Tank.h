@@ -10,11 +10,12 @@ class Tank
 public:
 	Tank();
 	Tank(int id, double lat, double lon, double hgt, Map theMap);
+	void print();
 	~Tank();
 
 private:
 	int tankId;
-	vector<vector<short>>* gridPtr;
+	Grid* gridPtr;
 	double latitude;
 	double longitude;
 	int xpos;

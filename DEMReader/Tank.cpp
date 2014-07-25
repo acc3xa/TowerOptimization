@@ -19,7 +19,7 @@ Tank::Tank(int id, double lat, double lon, double hgt, Map themap){
 	ypos = (int)((1 - latdif) * 1201);
 	xpos = (int)((1 - longdif) * 1201);
 	short h = heigth;
-	//elevation = h + gridPtr;
+	elevation = h + gridPtr->getElevation(xpos,ypos);
 
 
 }
@@ -27,4 +27,12 @@ Tank::Tank(int id, double lat, double lon, double hgt, Map themap){
 
 Tank::~Tank()
 {
+}
+
+void Tank::print(){
+	cout << "Tank ID: " << tankId << endl;
+	cout << "Latitude: " << latitude << endl;
+	cout << "Longitude: " << longitude << endl;
+	cout << "Height: " << heigth << endl;
+	cout << "Overall elevation: " << elevation << endl;
 }
