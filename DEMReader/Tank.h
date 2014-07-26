@@ -10,6 +10,10 @@ class Tank
 public:
 	Tank();
 	Tank(int id, double lat, double lon, double hgt, Map theMap);
+	int xpos;
+	int ypos;
+	int getXpos();
+	int getYpos();
 	void print();
 	~Tank();
 
@@ -18,8 +22,7 @@ private:
 	Grid* gridPtr;
 	double latitude;
 	double longitude;
-	int xpos;
-	int ypos;
+	
 	double heigth;
 	short elevation;
 };

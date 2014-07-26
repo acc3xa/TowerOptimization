@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="LineAlgorithm.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="OptimizationTest.cpp" />
     <ClCompile Include="Tank.cpp" />
@@ -89,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="LineAlgorithm.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Tank.h" />
   </ItemGroup>

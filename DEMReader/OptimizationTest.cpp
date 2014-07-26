@@ -5,6 +5,7 @@
 #include "Map.h"
 #include "Grid.h"
 #include "Tank.h"
+#include "LineAlgorithm.h"
 
 
 using namespace std;
@@ -40,7 +41,7 @@ int main(){
 
 	int id1, id2;
 	double lat1, lon1, hgt1, lat2, lon2, hgt2;
-	cout << "Enter id # of first tank: ";
+	/*cout << "Enter id # of first tank: ";
 	cin >> id1;
 	cout << "Enter Latitude of first tank: ";
 	cin >> lat1;
@@ -56,7 +57,15 @@ int main(){
 	cin >> lon2;
 	cout << "Enter Height of second tank: ";
 	cin >> hgt2;
-
+	*/
+	id1 = 1;
+	id2 = 2;
+	lat1 = 43.07;
+	lat2 = 43.1;
+	lon1 = 71.1;
+	lon2 = 71.2;
+	hgt1 = 10;
+	hgt2 = 5;
 	Tank tank1 = Tank(id1, lat1, lon1, hgt1, *theMap);
 	Tank tank2 = Tank(id2, lat2, lon2, hgt2, *theMap);
 
@@ -64,6 +73,10 @@ int main(){
 	tank1.print();
 	cout << "TANK 2 INFO" << endl;
 	tank2.print();
+
+	LineAlgorithm pathTest = LineAlgorithm(tank1, tank2);
+	cout << "done LINE!" << endl;
+
 
 	return 0;
 }

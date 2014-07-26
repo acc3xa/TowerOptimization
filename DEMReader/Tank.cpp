@@ -23,7 +23,13 @@ Tank::Tank(int id, double lat, double lon, double hgt, Map themap){
 
 
 }
+int Tank::getXpos(){
+	return xpos;
 
+}
+int Tank::getYpos(){
+	return ypos;
+}
 
 Tank::~Tank()
 {
@@ -36,3 +42,4 @@ void Tank::print(){
 	cout << "Height: " << heigth << endl;
 	cout << "Overall elevation: " << elevation << endl;
 }
+
