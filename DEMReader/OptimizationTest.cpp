@@ -10,6 +10,8 @@
 
 using namespace std;
 const int hgt_size = 1201;
+vector<vector<int>> pathBetween(Tank tank1, Tank tank2, int* p);
+vector <short> elevationProfile(vector<vector<int>> input, int size, Grid* grid1);
 
 int main(){
 	bool inputting = 1;
@@ -74,10 +76,83 @@ int main(){
 	cout << "TANK 2 INFO" << endl;
 	tank2.print();
 
-	LineAlgorithm pathTest = LineAlgorithm(tank1, tank2);
+	int* p = new int(0);
+	vector<vector<int>> testPath = pathBetween(tank1, tank2, p);
+	Grid* gptr = theMap->returngrid(0, 0);
+	vector<short> test = elevationProfile(testPath, *p, gptr);
+	for (int i = 0; i <= *p; i++){
+		cout << test.at(i) << endl;
+	}
 	cout << "done LINE!" << endl;
 
 
 	return 0;
 }
 
+vector<vector<int>> pathBetween(Tank tank1, Tank tank2, int* pathSize){
+	vector<vector<int>> path;
+	int x, y, xEnd;
+	int x1 = tank1.getXpos();
+	int x2 = tank2.getXpos();
+	int y1 = tank1.getYpos();
+	int y2 = tank2.getYpos();
+	int changeX = x2 - x1;
+	int changeY = y2 - y1;
+	int twody = 2 * changeY;
+	int twodxdy = 2 * (changeY - changeX);
+	int dp = twody - changeX;
+
+	//Decide which point comes first to make the slope postive (problem when it come to spanning multiple grids)
+	if (x1 > x2) {
+		x = x2;
+		y = y2;
+		xEnd = x1;
+	}
+	else {
+		x = x1;
+		y = y1;
+		xEnd = x2;
+	}
+
+	path.resize(1000);
+	for (size_t i = 0; i < 1000; i++)
+	{
+		path[i].resize(2);
+	}
+
+	path[0][0] = x;
+	path[0][1] = y;
+	int pathNum = 1;
+
+	//Bresenham line algorithm
+	while (x < xEnd) {
+		x = x + 1;
+		if (dp < 0) {
+			dp = dp + twody;
+		}
+		else {
+			y = y + 1;
+			dp = dp + twodxdy;
+		}
+		path[pathNum][0] = x;
+		path[pathNum][1] = y;
+		pathNum++;
+	}
+	*pathSize = pathNum;
+	return path;
+}
+
+vector <short> elevationProfile(vector<vector<int>> input, int psize, Grid* grid1){
+	vector <short> profile;
+	profile.resize(psize);
+	int x = 0;
+	int y = 0;
+	short elv = 0;
+	for (int i = 0; i <= psize; i++){
+		x = input[i][0];
+		y = input[i][1];
+		elv = grid1->getElevation(x, y);
+		profile.push_back(elv);
+	}
+	return profile;
+}

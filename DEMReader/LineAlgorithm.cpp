@@ -6,6 +6,61 @@ using namespace std;
 
 LineAlgorithm::LineAlgorithm(Tank tank1, Tank tank2)
 {
+	//Declare and give appropriate value to all required variables
+	int x, y, xEnd;
+	int x1 = tank1.getXpos();
+	int x2 = tank2.getXpos();
+	int y1 = tank1.getYpos();
+	int y2 = tank2.getYpos();
+	changeX = x2 - x1;
+	changeY = y2 - y1;
+	int twody = 2 * changeY;
+	int twodxdy = 2 * (changeY - changeX);
+	int dp = twody - changeX;
+
+	//Decide which point comes first to make the slope postive (problem when it come to spanning multiple grids)
+	if (x1 > x2) {
+		x = x2;
+		y = y2;
+		xEnd = x1;
+	}
+	else {
+		x = x1;
+		y = y1;
+		xEnd = x2;
+	}
+
+
+	path.resize(1000);
+	for (size_t i = 0; i < 1000; i++)
+	{
+		path[i].resize(2);
+	}
+
+	path[0][0] = x;
+	path[0][1] = y;
+	pathNum = 1;
+
+	//Bresenham line algorithm
+	while (x < xEnd) {
+		x = x + 1;
+		if (dp < 0) {
+			dp = dp + twody;
+		}
+		else {
+			y = y + 1;
+			dp = dp + twodxdy;
+		}
+		path[pathNum][0] = x;
+		path[pathNum][1] = y;
+		pathNum++;
+
+
+
+
+
+
+	/*
 	//xpos and ypos should be the relative position on the grid.
 	//so it would be the xpos and ypos of the tank
 	changeX = tank1.getXpos() - tank2.getXpos();
@@ -55,7 +110,7 @@ LineAlgorithm::LineAlgorithm(Tank tank1, Tank tank2)
 			done = 1;
 		}
 		
-		
+		*/
 	}
 	
 }

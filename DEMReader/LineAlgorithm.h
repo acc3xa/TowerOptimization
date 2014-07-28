@@ -22,6 +22,7 @@ private:
 	//used to keep track of current location
 	int currX;
 	int currY;
+	int pathNum;
 
 
 
