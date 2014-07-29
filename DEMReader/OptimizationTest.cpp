@@ -6,6 +6,8 @@
 #include "Grid.h"
 #include "Tank.h"
 #include "LineAlgorithm.h"
+#include "LineAttempt2.h"
+#include <vector>
 
 
 using namespace std;
@@ -62,10 +64,10 @@ int main(){
 	*/
 	id1 = 1;
 	id2 = 2;
-	lat1 = 43.07;
-	lat2 = 43.1;
-	lon1 = 71.1;
-	lon2 = 71.2;
+	lat1 = 43.1;
+	lat2 = 43.3;
+	lon1 = 71.2;
+	lon2 = 71.1;
 	hgt1 = 10;
 	hgt2 = 5;
 	Tank tank1 = Tank(id1, lat1, lon1, hgt1, *theMap);
@@ -75,23 +77,40 @@ int main(){
 	tank1.print();
 	cout << "TANK 2 INFO" << endl;
 	tank2.print();
-
+/*
 	int* p = new int(0);
 	vector<vector<int>> testPath = pathBetween(tank1, tank2, p);
 	Grid* gptr = theMap->returngrid(0, 0);
 	vector<short> test = elevationProfile(testPath, *p, gptr);
 	for (int i = 0; i <= *p; i++){
 		cout << test.at(i) << endl;
+		
+	}*/
+	//cout << "done LINE!" << endl;
+	LineAttempt2 test = LineAttempt2(tank1.getXpos(), tank1.getYpos(), tank2.getXpos(), tank2.getYpos());
+	string testdone;
+	vector<vector<int>> testpath = test.getPath();
+	for (int j = 0; j < testpath.size(); j++)
+	{
+		int s1;
+		int s2;
+		s1 = testpath[j][0];
+		s2 = testpath[j][1];
+		cout << "Step " << j << " x: " << s1 << " y: " << s2 << endl;
 	}
-	cout << "done LINE!" << endl;
+	cout << "LINE FOUND" << endl;
+	cin >> testdone;
+	if (testdone == "Y")
+		exit;
+	
 
 
-	return 0;
+	//return 0;
 }
 
 vector<vector<int>> pathBetween(Tank tank1, Tank tank2, int* pathSize){
 	vector<vector<int>> path;
-	int x, y, xEnd;
+	int x, y, xEnd, yEnd;
 	int x1 = tank1.getXpos();
 	int x2 = tank2.getXpos();
 	int y1 = tank1.getYpos();
@@ -107,11 +126,13 @@ vector<vector<int>> pathBetween(Tank tank1, Tank tank2, int* pathSize){
 		x = x2;
 		y = y2;
 		xEnd = x1;
+		yEnd = y1;
 	}
 	else {
 		x = x1;
 		y = y1;
 		xEnd = x2;
+		yEnd = y2;
 	}
 
 	path.resize(1000);
@@ -125,9 +146,10 @@ vector<vector<int>> pathBetween(Tank tank1, Tank tank2, int* pathSize){
 	int pathNum = 1;
 
 	//Bresenham line algorithm
-	while (x < xEnd) {
-		x = x + 1;
+	while ((x < xEnd) &&( y <yEnd)) {
+	
 		if (dp < 0) {
+			x = x + 1;
 			dp = dp + twody;
 		}
 		else {
