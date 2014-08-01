@@ -82,6 +82,7 @@
     <ClCompile Include="LineAlgorithm.cpp" />
     <ClCompile Include="LineAttempt2.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="NewMap.cpp" />
     <ClCompile Include="OptimizationTest.cpp" />
     <ClCompile Include="Tank.cpp" />
   </ItemGroup>
@@ -94,6 +95,7 @@
     <ClInclude Include="LineAlgorithm.h" />
     <ClInclude Include="LineAttempt2.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="NewMap.h" />
     <ClInclude Include="Tank.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
