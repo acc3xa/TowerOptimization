@@ -7,6 +7,7 @@
 #include "Tank.h"
 #include "LineAlgorithm.h"
 #include "LineAttempt2.h"
+#include "NewMap.h"
 #include <vector>
 
 
@@ -19,7 +20,11 @@ int main(){
 	bool inputting = 1;
 	bool first = 0;
 	Map* theMap = new Map();
+	NewMap testmap = NewMap(1,2,3,5,6,7,9,20);
+	cout << "map created" << endl;
+	system("pause");
 
+	/*
 	while (inputting == 1){
 		string yesno;
 		cout << "Enter a .hgt file? Answer 'Y' or 'N':  ";
@@ -61,7 +66,7 @@ int main(){
 	cin >> lon2;
 	cout << "Enter Height of second tank: ";
 	cin >> hgt2;
-	*/
+	
 	id1 = 1;
 	id2 = 2;
 	lat1 = 43.1;
@@ -85,7 +90,7 @@ int main(){
 	for (int i = 0; i <= *p; i++){
 		cout << test.at(i) << endl;
 		
-	}*/
+	}
 	//cout << "done LINE!" << endl;
 	LineAttempt2 test = LineAttempt2(tank1.getXpos(), tank1.getYpos(), tank2.getXpos(), tank2.getYpos());
 	string testdone;
@@ -102,9 +107,9 @@ int main(){
 	cin >> testdone;
 	if (testdone == "Y")
 		exit;
+	*/
+
 	
-
-
 	//return 0;
 }
 

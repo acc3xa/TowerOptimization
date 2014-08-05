@@ -14,13 +14,21 @@ public:
 
 private:
 	string createFileName(int lat, int lon);
-	int farthestPoints(int p1, int p2,int p3, int p4);
+	int findLargest(int p1, int p2,int p3, int p4);
+	int findSmallest(int p1, int p2, int p3, int p4);
+	vector<vector<int>> createMap(int rangeX, int rangeY);
 	string file1;
 	string file2;
 	string file3;
 	string file4;
-	int farthestX;
-	int farthestY;
+	int lowY;
+	int highY;
+	int lowX;
+	int highX;
+	int rangeY;
+	int rangeX;
+	
+
 
 };
 

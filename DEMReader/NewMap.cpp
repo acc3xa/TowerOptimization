@@ -1,4 +1,5 @@
 #include "NewMap.h"
+#include <vector>
 
 //constructor
 NewMap::NewMap(double lat1, double lon1, double lat2, double lon2, double lat3, double lon3, double lat4, double lon4)
@@ -19,14 +20,32 @@ NewMap::NewMap(double lat1, double lon1, double lat2, double lon2, double lat3, 
 	file3 = createFileName(y3, x3);
 	file4 = createFileName(y4, x4);
 
-	//find farthest distance of x and y coordinates
-	farthestX = farthestPoints(x1, x2, x3, x4);
-	farthestY = farthestPoints(y1, y2, y3, y4);
+	//find highest and lowest x and y coordinates
+	lowY = findSmallest(y1, y2, y3, y4);
+	highY = findLargest(y1, y2, y3, y4);
+	lowX = findSmallest(x1, x2, x3, x4);
+	highX = findLargest(x1, x2, x3, x4);
+	
+	//find the range of x and y to know how big to make the grid
+	rangeY = highY - lowY;
+	rangeX = highX - lowX;
+
+	vector <vector<int>>testmap = createMap(rangeX, rangeY);
+	
+	/* used for testing
+	cout << testmap[0].size() << endl;
+	cout << testmap.size() << endl;
+	cout << findLargest(y1, y2, y3, y4) << endl;
+	cout << findLargest(x1, x2, x3, x4) << endl;
+	cout << createFileName(43, 71) << endl;
+	*/
+
+
 }
 
 //create filename using  a given lat and lon
 string NewMap::createFileName(int lat, int lon){
-	if (lat > 99){
+	if (lon > 99){
 		return "N" + std::to_string(lat) + "W" + std::to_string(lon) + ".hgt";
 	}
 	else{
@@ -34,23 +53,46 @@ string NewMap::createFileName(int lat, int lon){
 	}
 }
 
-//given 4 points, finds the two that are farthest apart and gives their difference, used for calculating how big map will be
-int NewMap::farthestPoints(int p1, int p2, int p3, int p4){
+//given 4 points, find the largets
+int NewMap::findLargest(int p1, int p2, int p3, int p4){
 	int points[4] = { p1, p2, p3, p4 };
-	int largestDistance = 0;
-	for (int i = 0; i < 4; i++)
+	int largest = p1;
+	for (int i = 1; i < 4; i++)
 	{
-		for (int j = i; j < 4 - i; j++){
-			if (abs(points[i] - points[j]) > largestDistance)
-				largestDistance = abs(points[i] - points[j]);
-		}
+		if (points[i] > largest)
+			largest = points[i];
 	}
-	return largestDistance;
+	return largest;
+}
+//given 4 points, find smallest
+int NewMap::findSmallest(int p1, int p2, int p3, int p4){
+	int points[4] = { p1, p2, p3, p4 };
+	int smallest = p1;
+	for (int i = 1; i < 4; i++)
+	{
+		if (points[i] < smallest)
+			smallest = points[i];
+	}
+	return smallest;
 }
 
-///NEXT STEP IS TO CREATE THE ACTUAL MAP
-//USE A 2DARRRAY OF SIZE LARGESTDISTANCE*1200
-//USE CODE FROM OLD GRID CLASS TO IMPORT DATA TO THE 2D ARRAY
+
+//actually create the map
+vector<vector<int>> NewMap::createMap(int rgX, int rgY){
+	//create map using vector of vectors
+	vector<vector<int>> tempMap = {};
+	//make the map the right size
+	tempMap.resize(rgX * 1200);
+	for (int i = 0; i < rgY*1200; i++)
+	{
+		tempMap[i].resize(1200 * rgY);
+	}
+	//dont know how to fill in the map with the .hgt files
+
+	
+	return tempMap;
+}
+
 //HAVE NOT TESTED ANY CODE IN THIS CLASS YET
 NewMap::~NewMap()
 {
