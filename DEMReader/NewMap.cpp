@@ -32,13 +32,14 @@ NewMap::NewMap(double lat1, double lon1, double lat2, double lon2, double lat3, 
 
 	vector <vector<int>>testmap = createMap(rangeX, rangeY);
 	
-	/* used for testing
+	
 	cout << testmap[0].size() << endl;
 	cout << testmap.size() << endl;
 	cout << findLargest(y1, y2, y3, y4) << endl;
 	cout << findLargest(x1, x2, x3, x4) << endl;
 	cout << createFileName(43, 71) << endl;
-	*/
+	
+	
 
 
 }
@@ -87,12 +88,39 @@ vector<vector<int>> NewMap::createMap(int rgX, int rgY){
 	{
 		tempMap[i].resize(1200 * rgY);
 	}
-	//dont know how to fill in the map with the .hgt files
 
+	//iterate through map to place data files
+	for (int a = lowX; a <= highX; a++){
+		for (int b = lowY; b <= highY; b++){
+			string currFile = createFileName(a, b);
+			fillMap((1200*(a-lowX)), (1200*(b-lowY)), currFile,tempMap);
+		}
+	}
 	
 	return tempMap;
 }
 
+void NewMap::fillMap(int startX, int startY, string fileName, vector<vector<int>> theMap){
+	ifstream file(fileName.c_str(), std::ios::in | std::ios::binary);
+	if (!file.is_open()){
+		cerr << "The file did not open correctly" << endl;
+		exit(-1);
+	}
+	unsigned char buffer[2];
+	for (startX; startX < startX + 1201; ++startX)
+	{
+		for (startY; startY < startY + 1201; ++startY)
+		{
+			if (!file.read(reinterpret_cast<char*>(buffer), sizeof(buffer)))
+			{
+				std::cout << "Error reading file!" << std::endl;
+				exit(-1);
+			}
+			theMap[startX][startY] = (buffer[0] << 8) | buffer[1];
+		}
+	}
+
+}
 //HAVE NOT TESTED ANY CODE IN THIS CLASS YET
 NewMap::~NewMap()
 {

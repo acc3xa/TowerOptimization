@@ -17,6 +17,7 @@ private:
 	int findLargest(int p1, int p2,int p3, int p4);
 	int findSmallest(int p1, int p2, int p3, int p4);
 	vector<vector<int>> createMap(int rangeX, int rangeY);
+	void fillMap(int startX, int startY, string fileName, vector<vector<int>> theMap);
 	string file1;
 	string file2;
 	string file3;
