@@ -10,7 +10,7 @@
 #include "NewMap.h"
 #include <vector>
 
-
+/*
 using namespace std;
 const int hgt_size = 1201;
 vector<vector<int>> pathBetween(Tank tank1, Tank tank2, int* p);
@@ -107,7 +107,7 @@ int main(){
 	cin >> testdone;
 	if (testdone == "Y")
 		exit;
-	*/
+
 
 	
 	//return 0;
@@ -183,3 +183,4 @@ vector <short> elevationProfile(vector<vector<int>> input, int psize, Grid* grid
 	}
 	return profile;
 }
+*/
