@@ -55,6 +55,7 @@ NewMap2::NewMap2(double lat1, double lon1, double lat2, double lon2, double lat3
 	}
 
 
+
 	//cout << testmap[0].size() << endl;
 	//cout << testmap.size() << endl;
 	cout << findLargest(y1, y2, y3, y4) << endl;
@@ -117,8 +118,8 @@ void NewMap2::fillMap(int startX, int startY, string fileName){
 		//cout << startY << " " << upperY<< " ";
 		for (startX; startX < upperX; startX++)
 		{
-			cout << startX << " ";
-			cout << startY << " ";
+			//cout << startX << " ";
+			//cout << startY << " ";
 			if (!file.read(reinterpret_cast<char*>(buffer), sizeof(buffer)))
 			{
 				std::cout << "Error reading file!" << std::endl;
@@ -126,6 +127,8 @@ void NewMap2::fillMap(int startX, int startY, string fileName){
 			}
 			theMap[startY][startX] = (buffer[0] << 8) | buffer[1];
 		}
+		startX -= 1200;
+		
 	}
 
 }
