@@ -41,9 +41,9 @@ NewMap2::NewMap2(double lat1, double lon1, double lat2, double lon2, double lat3
 		theMap[i].resize(1201 * rangeX);
 	}
 	
-	cout << rangeX << endl;
-	cout << rangeY << endl;
-	cout << "map resized" << endl;
+	//cout << rangeX << endl;
+	//cout << rangeY << endl;
+	//cout << "map resized" << endl;
 
 	//iterate through map to place data files
 	for (int a = highX; a>= lowX; a--){
@@ -58,7 +58,7 @@ NewMap2::NewMap2(double lat1, double lon1, double lat2, double lon2, double lat3
 
 	//cout << testmap[0].size() << endl;
 	//cout << testmap.size() << endl;
-	cout << findLargest(y1, y2, y3, y4) << endl;
+	//cout << findLargest(y1, y2, y3, y4) << endl;
 	//cout << findLargest(x1, x2, x3, x4) << endl;
 	//cout << createFileName(43, 71) << endl;
 
@@ -132,6 +132,60 @@ void NewMap2::fillMap(int startX, int startY, string fileName){
 	}
 
 }
+
+vector<vector<short int>> findPath(double lat1, double lon1, double lat2, double lon2){
+	int ulX = highX;
+
+	//create vector to hold the path
+	//this can be changed to a different data structure if needed
+	vector<vector<short int>> path;
+	path.resize(300);
+	for (size_t i = 0; i < 300; i++)
+	{
+		path[i].resize(2);
+	}
+
+	int dx = abs(x2 - x1);
+	int dy = abs(y2 - y1);
+	//makes it so that it doesnt matter which point appears first
+	int sx, sy;
+	if (x1 < x2)
+		sx = 1;
+	else
+		sx = -1;
+	if (y1 < y2)
+		sy = 1;
+	else
+		sy = -1;
+
+	int error = dx - dy;
+	//placeholder
+	int e2;
+	bool done = 0;
+	int pathNum = 0;
+	while (done == 0){
+		path[pathNum][0] = x1;
+		path[pathNum][1] = y1;
+
+		if (x1 == x2 && y1 == y2)
+			done = 1;
+
+		e2 = 2 * error;
+		if (e2 > -dy){
+			error = error - dy;
+			x1 = x1 + sx;
+		}
+		if (e2 < dx){
+			error = error + dx;
+			y1 = y1 + sy;
+		}
+		pathNum++;
+
+	}
+
+	return path;
+}
+
 //HAVE NOT TESTED ANY CODE IN THIS CLASS YET
 NewMap2::~NewMap2()
 {

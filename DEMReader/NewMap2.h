@@ -10,6 +10,11 @@ class NewMap2
 {
 public:
 	NewMap2(double lat1, double lon1, double lat2, double lon2, double lat3, double lon3, double lat4, double lon4);
+	vector<vector<short int>> findPath(double lat1, double lon1, double lat2, double lon2);
+	int lowY;
+	int highY;
+	int lowX;
+	int highX;
 	~NewMap2();
 
 private:
@@ -21,13 +26,9 @@ private:
 	string file2;
 	string file3;
 	string file4;
-	int lowY;
-	int highY;
-	int lowX;
-	int highX;
 	int rangeY;
 	int rangeX;
 	vector<vector<short>> theMap;
-	
+
 };
 
