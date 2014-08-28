@@ -15,6 +15,8 @@ public:
 	int highY;
 	int lowX;
 	int highX;
+	int convertToMapPosX(double initialPos);
+	int convertToMapPosY(double initialPos);
 	~NewMap2();
 
 private:
@@ -28,7 +30,7 @@ private:
 	string file4;
 	int rangeY;
 	int rangeX;
-	vector<vector<short>> theMap;
-
+	vector<vector<short>> theMap; 
+	
 };
 
