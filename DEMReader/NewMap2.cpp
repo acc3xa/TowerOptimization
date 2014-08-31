@@ -134,30 +134,40 @@ void NewMap2::fillMap(int startX, int startY, string fileName){
 }
 //pulls the corresponding latitude postion on the grid
 int NewMap2::convertToMapPosX(double initialPos){
-	double multiplier = initialPos - lowX;
+	cout << initialPos << endl;
+	cout << lowX << endl;
+	double multiplier = initialPos - (lowX-1);
+	cout << multiplier << endl;
 	return multiplier * 1200;
 }
 //pulls the corresponding longitude position on the grid
 int NewMap2::convertToMapPosY(double initialPos){
+	cout << initialPos << endl;
+	cout << lowY << endl;
 	double multiplier = initialPos - lowY;
+	cout << multiplier << endl;
 	return multiplier * 1200;
 }
 
-vector<vector<short int>> findPath(double lat1, double lon1, double lat2, double lon2){
+vector<vector<short int>> NewMap2::findPath(double lat1, double lon1, double lat2, double lon2){
 	int ulX = highX;
-	int x1 = NewMap2::convertToMapPosX(lat1);
-	int y1 = NewMap2::convertToMapPosY(lon1);
-	int x2 = NewMap2::convertToMapPosX(lat2);
-	int y2 = NewMap2::convertToMapPosY(lon2);
+	int x1 = convertToMapPosX(lat1);
+	int y1 = convertToMapPosY(lon1);
+	int x2 = convertToMapPosX(lat2);
+	int y2 = convertToMapPosY(lon2);
 	
+//	cout << x1 << endl;
+	//cout << y1 << endl;
+	//cout << x2 << endl;
+	//cout << y2 << endl;
 
 	
 
 	//create vector to hold the path
 	//this can be changed to a different data structure if needed
 	vector<vector<short int>> path;
-	path.resize(300);
-	for (size_t i = 0; i < 300; i++)
+	path.resize(4000);
+	for (size_t i = 0; i < 4000; i++)
 	{
 		path[i].resize(2);
 	}
