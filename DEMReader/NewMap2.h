@@ -10,7 +10,8 @@ class NewMap2
 {
 public:
 	NewMap2(double lat1, double lon1, double lat2, double lon2, double lat3, double lon3, double lat4, double lon4);
-	vector<vector<short int>> findPath(double lat1, double lon1, double lat2, double lon2);
+	vector<vector<short int>> findPath(double lat1, double lon1, int elevation1, double lat2, double lon2, int elevation2);
+	bool lineOfSight(vector<vector<short int>> path);
 	int lowY;
 	int highY;
 	int lowX;
