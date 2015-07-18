@@ -24,14 +24,24 @@
     <ClCompile Include="Tank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="N43W071.hgt">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="N43W072.hgt">
-      <Filter>Resource Files</Filter>
-    </None>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LineAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LineAttempt2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NewMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NewTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NewMap2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h">
@@ -40,5 +50,40 @@
     <ClInclude Include="Tank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LineAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LineAttempt2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NewMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NewMap2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="N42W071.hgt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="N42W072.hgt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="N42W073.hgt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="N43W071.hgt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="N43W072.hgt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="N43W073.hgt">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

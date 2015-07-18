@@ -78,17 +78,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="LineAlgorithm.cpp" />
+    <ClCompile Include="LineAttempt2.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="NewMap.cpp" />
+    <ClCompile Include="NewMap2.cpp" />
+    <ClCompile Include="NewTest.cpp" />
     <ClCompile Include="OptimizationTest.cpp" />
     <ClCompile Include="Tank.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="N43W071.hgt" />
-    <None Include="N43W072.hgt" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="LineAlgorithm.h" />
+    <ClInclude Include="LineAttempt2.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="NewMap.h" />
+    <ClInclude Include="NewMap2.h" />
+    <ClInclude Include="Tank.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Tank.h" />
+    <None Include="N42W071.hgt" />
+    <None Include="N42W072.hgt" />
+    <None Include="N42W073.hgt" />
+    <None Include="N43W071.hgt" />
+    <None Include="N43W072.hgt" />
+    <None Include="N43W073.hgt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

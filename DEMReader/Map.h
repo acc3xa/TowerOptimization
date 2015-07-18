@@ -4,6 +4,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <vector>
+#include "Grid.h"
 
 using namespace std;
 
@@ -14,12 +15,12 @@ public:
 	~Map();
 	void firstInsert(string s);
 	void insertGrid(string s);
-	vector<vector<short>>* returngrid(int xdiff, int ydiff);
+	Grid* returngrid(int xdiff, int ydiff);
 	int getCenterLat();
 	int getCenterLong();
 
 private:
-	vector<vector<vector<vector<short>>*>> theMap;
+	vector<vector<Grid>> theMap;
 	int centerLat;
 	int centerLong;
 
